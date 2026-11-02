@@ -1114,3 +1114,242 @@ footer strong {
 .note-media-preview { display: block; max-width: 100%; max-height: 220px; margin-top: 12px; border-radius: 8px; border: 1px solid #294333; }
 .note-media-link { display: inline-block; color: #7cebb4; margin-top: 10px; font-size: 12px; }
 .note-card video, .note-card audio { width: 100%; margin-top: 12px; }
+
+
+/* =========================================
+   ABOUT / GOALS / PHILOSOPHY / CERTIFICATES
+========================================= */
+#about {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 8% 25%, rgba(0,255,153,.075), transparent 36%),
+        linear-gradient(135deg, #0b100d 0%, #0a0a0a 68%);
+}
+#about::after {
+    content: "RAAZ";
+    position: absolute;
+    right: -25px;
+    top: 75px;
+    color: rgba(125,255,190,.025);
+    font-size: clamp(100px, 19vw, 250px);
+    font-weight: 900;
+    letter-spacing: -12px;
+    pointer-events: none;
+}
+#about .container { position: relative; z-index: 1; }
+#about .section-label { color: #64dca0; }
+#about .section-title {
+    max-width: 700px;
+    margin-bottom: 38px;
+    font-size: clamp(42px, 6vw, 66px);
+    letter-spacing: -2.5px;
+}
+.about-grid {
+    grid-template-columns: minmax(0, 1.55fr) minmax(260px, .85fr);
+    align-items: stretch;
+    gap: 26px;
+}
+.about-text {
+    padding: clamp(25px, 4vw, 42px);
+    border: 1px solid rgba(100,220,160,.18);
+    border-radius: 16px;
+    background: linear-gradient(145deg, rgba(20,34,25,.92), rgba(12,17,14,.94));
+    box-shadow: 0 18px 55px rgba(0,0,0,.2);
+}
+.about-text p {
+    color: #b3c4b9;
+    font-size: 15px;
+    line-height: 2;
+    margin-bottom: 20px;
+}
+.about-text p:last-child { margin-bottom: 0; }
+.about-text strong { color: #effff4; font-weight: 700; }
+.about-card {
+    display: grid;
+    align-content: center;
+    padding: 20px 26px;
+    border: 1px solid #31513f;
+    border-radius: 16px;
+    background:
+        radial-gradient(circle at 100% 0%, rgba(0,255,153,.12), transparent 42%),
+        #101813;
+}
+.info { padding: 18px 0; border-bottom-color: rgba(130,190,150,.16); }
+.info span { color: #6eb98e; font-size: 10px; letter-spacing: 1.8px; }
+.info strong { color: #e3f5e9; font-size: 15px; }
+.info:last-child { border-bottom: 0; }
+
+.goals-section {
+    background:
+        radial-gradient(ellipse at 90% 10%, rgba(0,255,153,.08), transparent 35%),
+        #0b0f0c;
+}
+.goals-section .section-title { margin-bottom: 42px; }
+.goals {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 17px;
+}
+.goal {
+    position: relative;
+    min-height: 225px;
+    padding: 30px;
+    overflow: hidden;
+    border: 1px solid #263e30;
+    border-radius: 13px;
+    background: linear-gradient(145deg, #121d16, #0d120f);
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.goal::after {
+    content: "";
+    position: absolute;
+    width: 115px;
+    height: 115px;
+    right: -45px;
+    bottom: -50px;
+    border: 1px solid rgba(0,255,153,.12);
+    border-radius: 50%;
+    box-shadow: 0 0 0 16px rgba(0,255,153,.025), 0 0 0 32px rgba(0,255,153,.018);
+}
+.goal:hover {
+    transform: translateY(-5px);
+    border-color: #00bd78;
+    box-shadow: 0 16px 35px rgba(0,0,0,.22);
+}
+.goal span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 30px;
+    border: 1px solid #286344;
+    border-radius: 6px;
+    background: rgba(0,255,153,.07);
+    color: #70e9ad;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+.goal h3 { margin: 21px 0 10px; color: #e7f5eb; font-size: 21px; }
+.goal p { max-width: 440px; color: #91a69a; font-size: 13px; line-height: 1.85; }
+
+.philosophy-section {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(115deg, #101a13, #090d0a 70%);
+}
+.philosophy-section .container { position: relative; z-index: 1; }
+.philosophy-section .section-title { margin-bottom: 28px; }
+.philosophy-section .quote {
+    max-width: 900px;
+    margin: 0 0 27px;
+    padding: 25px 32px;
+    border: 1px solid rgba(0,255,153,.22);
+    border-left: 4px solid #00e58b;
+    border-radius: 0 12px 12px 0;
+    background: linear-gradient(100deg, rgba(0,255,153,.08), rgba(0,255,153,.015));
+}
+.philosophy-section .quote p {
+    color: #eafff1;
+    font-size: clamp(25px, 4vw, 42px);
+    line-height: 1.3;
+    letter-spacing: -1px;
+}
+.philosophy-section .quote span {
+    display: inline-block;
+    margin-top: 13px;
+    color: #6ce5a7;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.philosophy-section .philosophy {
+    max-width: 760px;
+    color: #9eb2a4;
+    font-size: 15px;
+    line-height: 2;
+}
+
+.certificate-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 72px 0 25px;
+}
+.certificate-heading h3 { color: #eaf8ef; font-size: clamp(23px, 3vw, 30px); margin: 0 0 7px; }
+.certificate-intro { color: #8fa397; font-size: 13px; }
+.certificate-count {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    border: 1px solid #31513f;
+    border-radius: 30px;
+    color: #80e9b4;
+    background: rgba(0,255,153,.045);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+.certificate-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 16px;
+}
+.certificate-card, .certificate-placeholder {
+    min-height: 220px;
+    padding: 25px;
+    border: 1px solid #294333;
+    border-radius: 13px;
+    background: linear-gradient(145deg, #142019, #0d130f);
+}
+.certificate-icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 20px;
+    border: 1px solid #36724f;
+    border-radius: 10px;
+    color: #8bffc1;
+    background: rgba(0,255,153,.07);
+    font-size: 20px;
+}
+.certificate-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+.certificate-meta span {
+    color: #6edba2;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+.certificate-meta span + span { color: #819b8a; }
+.certificate-card h4 { color: #e8f5ec; font-size: 18px; line-height: 1.5; margin-bottom: 9px; }
+.certificate-card p { color: #91a69a; font-size: 12px; line-height: 1.8; }
+.certificate-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(130,190,150,.15);
+    color: #789080;
+    font-size: 10px;
+}
+.certificate-status { color: #70e9ad; letter-spacing: 1.2px; }
+.certificate-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    border-style: dashed;
+    background: rgba(15,24,18,.55);
+}
+.certificate-placeholder > span { color: #69dca0; font-size: 32px; line-height: 1; margin-bottom: 15px; }
+.certificate-placeholder strong { color: #d8e9de; font-size: 15px; }
+.certificate-placeholder small { color: #789080; margin-top: 7px; font-size: 11px; }
+
+@media (max-width: 700px) {
+    .about-grid, .goals, .certificate-grid { grid-template-columns: 1fr; }
+    .about-grid { gap: 16px; }
+    .about-card { padding: 12px 23px; }
+    .goal { min-height: auto; padding: 25px; }
+    .certificate-heading { align-items: flex-start; flex-direction: column; margin-top: 55px; }
+    .philosophy-section .quote { padding: 22px; }
+}
