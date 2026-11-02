@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090e0b">
+    <title>Gallery | RAAZ.EXE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="collection-page" data-collection="gallery">
+    <div class="collection-noise"></div>
+    <header class="collection-header">
+        <a class="collection-logo" href="index.html">RAAZ<span>.</span>EXE</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a class="active" href="gallery.html">Gallery</a>
+            <a href="dumps.html">Dumps</a>
+        </nav>
+        <a class="collection-back" href="index.html">← Main space</a>
+    </header>
+    <main class="collection-main">
+        <section class="collection-hero">
+            <p class="collection-eyebrow"><span></span> PERSONAL ARCHIVE / 01</p>
+            <h1>Frames worth <em>keeping.</em></h1>
+            <p>A little visual diary. Moments, places, people, and photographs I want to remember.</p>
+            <div class="collection-hero-bottom"><span>THE GALLERY</span><span>CURATED BY RAAZ · EST. 2026</span></div>
+        </section>
+        <section class="collection-toolbar">
+            <div><span class="collection-overline">VISUAL COLLECTION</span><h2>Selected frames <span id="item-count">00</span></h2></div>
+            <button class="collection-add-btn" id="open-editor">＋ Add photos</button>
+        </section>
+        <div class="collection-controls">
+            <label class="collection-search">⌕ <input id="collection-search" type="search" placeholder="Search photos..."></label>
+            <span class="collection-tip">Your personal visual archive</span>
+        </div>
+        <section id="gallery-grid" class="gallery-grid" aria-live="polite">
+            <div class="collection-empty"><span>▧</span><h3>Your gallery starts here.</h3><p>Add your favourite photos to build this space.</p></div>
+        </section>
+    </main>
+    <div class="collection-modal" id="editor-modal" aria-hidden="true">
+        <div class="collection-dialog">
+            <button class="modal-close" data-close aria-label="Close">×</button>
+            <p class="collection-overline">ADD TO YOUR ARCHIVE</p>
+            <h2>New frames<span>.</span></h2>
+            <form id="collection-form">
+                <label>PHOTO TITLE<input name="title" maxlength="60" placeholder="e.g. A quiet evening" required></label>
+                <label>CAPTION<input name="caption" maxlength="140" placeholder="A few words about this moment"></label>
+                <label>CHOOSE PHOTOS<input name="media" type="file" accept="image/*" multiple required></label>
+                <small>Images are saved in this browser only. Keep each image under 1.5 MB.</small>
+                <button class="collection-add-btn" type="submit">Save to gallery ↗</button>
+            </form>
+            <p class="collection-error" id="collection-error" role="alert"></p>
+        </div>
+    </div>
+    <div class="lightbox" id="lightbox" aria-hidden="true"><button class="lightbox-close" data-lightbox-close>×</button><img id="lightbox-image" alt=""><div id="lightbox-caption"></div></div>
+    <footer class="collection-footer"><span>RAAZ.EXE / GALLERY</span><a href="index.html">← Return to main space</a><span>MADE OF MOMENTS.</span></footer>
+    <script src="collection.js"></script>
+</body>
+</html>
