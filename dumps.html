@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090e0b">
+    <title>Dumps | RAAZ.EXE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="collection-page" data-collection="dumps">
+    <div class="collection-noise"></div>
+    <header class="collection-header">
+        <a class="collection-logo" href="index.html">RAAZ<span>.</span>EXE</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="gallery.html">Gallery</a>
+            <a class="active" href="dumps.html">Dumps</a>
+        </nav>
+        <a class="collection-back" href="index.html">← Main space</a>
+    </header>
+    <main class="collection-main dumps-main">
+        <section class="collection-hero dumps-hero">
+            <p class="collection-eyebrow"><span></span> UNSORTED THOUGHTS / 02</p>
+            <h1>Dump it. <em>Keep it.</em></h1>
+            <p>Random thoughts, screenshots, links, files, unfinished ideas, tiny discoveries — anything that deserves a place.</p>
+            <div class="collection-hero-bottom"><span>THE DUMP ZONE</span><span>NO RULES. JUST RAAZ.</span></div>
+        </section>
+        <section class="collection-toolbar">
+            <div><span class="collection-overline">THE EVERYTHING FOLDER</span><h2>Recent drops <span id="item-count">00</span></h2></div>
+            <button class="collection-add-btn" id="open-editor">＋ New dump</button>
+        </section>
+        <div class="collection-controls">
+            <label class="collection-search">⌕ <input id="collection-search" type="search" placeholder="Search your dumps..."></label>
+            <div class="dump-filters"><button class="active" data-filter="all">All</button><button data-filter="text">Text</button><button data-filter="file">Files</button></div>
+        </div>
+        <section id="dumps-grid" class="dumps-grid" aria-live="polite">
+            <div class="collection-empty"><span>⌁</span><h3>Nothing dumped. Yet.</h3><p>Start with a thought, a link, a file, or something random.</p></div>
+        </section>
+    </main>
+    <div class="collection-modal" id="editor-modal" aria-hidden="true">
+        <div class="collection-dialog">
+            <button class="modal-close" data-close aria-label="Close">×</button>
+            <p class="collection-overline">DROP SOMETHING HERE</p>
+            <h2>New dump<span>.</span></h2>
+            <form id="collection-form">
+                <label>TITLE<input name="title" maxlength="70" placeholder="Give this dump a name" required></label>
+                <label>TYPE<select name="category"><option value="random">Random</option><option value="ideas">Ideas</option><option value="coding">Coding</option><option value="life">Life</option><option value="links">Links</option><option value="inspiration">Inspiration</option></select></label>
+                <label>YOUR DUMP<textarea name="body" rows="5" maxlength="2500" placeholder="Write anything. A thought, a link, a reminder..." ></textarea></label>
+                <label>ATTACH A FILE <input name="media" type="file"></label>
+                <small>Saved in this browser only. Attachments must be under 2 MB.</small>
+                <button class="collection-add-btn" type="submit">Save this dump ↗</button>
+            </form>
+            <p class="collection-error" id="collection-error" role="alert"></p>
+        </div>
+    </div>
+    <footer class="collection-footer"><span>RAAZ.EXE / DUMPS</span><a href="index.html">← Return to main space</a><span>MESSY IS ALLOWED.</span></footer>
+    <script src="collection.js"></script>
+</body>
+</html>
