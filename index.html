@@ -38,6 +38,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#notes">Notes</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -204,6 +205,43 @@
                 </article>
             </div>
             <p class="dashboard-footnote"><span>ROOT@RAAZ</span> <span>·</span> KEEP_LEARNING(); KEEP_BUILDING();</p>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- ================= PERSONAL NOTES ================= -->
+    <section id="notes" class="section notes-section">
+        <div class="container">
+            <p class="section-label">PERSONAL SPACE / NOTES</p>
+            <div class="notes-heading">
+                <div>
+                    <h2 class="section-title">Notes<span class="accent-text">.txt</span></h2>
+                    <p class="notes-intro">A small corner for random thoughts, quick ideas and things worth remembering.</p>
+                </div>
+                <span class="notes-count" id="notes-count">0 SAVED</span>
+            </div>
+
+            <form id="note-form" class="note-editor">
+                <label for="note-title">NOTE TITLE</label>
+                <input id="note-title" type="text" maxlength="70" placeholder="Give this thought a title..." required>
+                <label for="note-content">YOUR NOTE</label>
+                <textarea id="note-content" rows="4" maxlength="1500" placeholder="Write an idea, reminder or random thought..." required></textarea>
+                <div class="note-editor-footer">
+                    <small>Saved in this browser on this device.</small>
+                    <button type="submit" class="note-save-btn">+ Save Note</button>
+                </div>
+            </form>
+
+            <div class="saved-notes-heading">
+                <h3>Saved notes</h3>
+                <span>YOUR PRIVATE COLLECTION</span>
+            </div>
+            <div id="notes-list" class="notes-list" aria-live="polite">
+                <p class="notes-empty">No notes yet. Your next idea can start here.</p>
+            </div>
         </div>
     </section>
 
