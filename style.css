@@ -1594,3 +1594,29 @@ footer strong {
     .collection-launch-heading { align-items: flex-start; flex-direction: column; }
     .collection-launch-section { padding: 70px 0; }
 }
+
+
+/* Certificate preview link */
+.certificate-view-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 18px;
+    padding: 10px 14px;
+    border: 1px solid #36724f;
+    border-radius: 6px;
+    color: #8bffc1;
+    background: rgba(0,255,153,.06);
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    transition: .2s ease;
+}
+.certificate-view-link:hover {
+    border-color: #00d985;
+    color: #06110b;
+    background: #00d985;
+    transform: translateY(-2px);
+}
+.certificate-view-link span { font-size: 14px; }
