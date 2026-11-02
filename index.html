@@ -12,18 +12,17 @@
 <body>
     <div id="password-screen">
     <div class="password-box">
-        <h1>🔒 Private</h1>
-        <p>Enter the password to continue.</p>
-
-        <input
-            type="password"
-            id="password"
-            placeholder="Enter password"
-        >
-
-        <button onclick="checkPassword()">Enter</button>
-
-        <p id="error-message"></p>
+        <div class="login-mark">R<span>.</span></div>
+        <p class="login-eyebrow">RAAZ.EXE / PRIVATE ACCESS</p>
+        <h1>Welcome back.</h1>
+        <p class="login-description">This space is personal. Enter your access key to continue.</p>
+        <form id="password-form">
+            <label for="password">ACCESS KEY</label>
+            <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password" required>
+            <button type="submit">Unlock workspace <span>↗</span></button>
+        </form>
+        <p id="error-message" role="alert"></p>
+        <div class="login-footer"><span class="login-dot"></span> PRIVATE WORKSPACE</div>
     </div>
 </div>
 
@@ -38,7 +37,6 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#dashboard">Dashboard</a></li>
-                <li><a href="#notes">Notes</a></li>
                 <li><a href="#notes">Notes</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -161,7 +159,7 @@
                     <span class="system-indicator"></span>
                     <span id="dashboard-date">Loading date...</span>
                     <strong id="dashboard-clock">--:--:--</strong>
-                    <small>LOCAL SYSTEM TIME</small>
+                    <small>LOCAL TIME · 12-HOUR</small>
                 </div>
             </div>
 
@@ -230,6 +228,9 @@
                 <input id="note-title" type="text" maxlength="70" placeholder="Give this thought a title..." required>
                 <label for="note-content">YOUR NOTE</label>
                 <textarea id="note-content" rows="4" maxlength="1500" placeholder="Write an idea, reminder or random thought..." required></textarea>
+                <label for="note-media">ATTACH MEDIA <span class="optional-label">OPTIONAL · IMAGE / VIDEO / AUDIO</span></label>
+                <input id="note-media" class="note-media-input" type="file" accept="image/*,video/*,audio/*">
+                <small class="media-hint">One file per note · up to 1 MB · stored in this browser</small>
                 <div class="note-editor-footer">
                     <small>Saved in this browser on this device.</small>
                     <button type="submit" class="note-save-btn">+ Save Note</button>
@@ -248,35 +249,7 @@
 
 
 
-<section id="notes" class="section notes-section">
-    <div class="container">
-        <p class="section-label">PERSONAL SPACE / NOTES</p>
-        <div class="notes-heading">
-            <div>
-                <h2 class="section-title">Notes<span class="accent-text">.txt</span></h2>
-                <p class="notes-intro">A corner for random thoughts, quick ideas and things worth remembering.</p>
-            </div>
-            <span class="notes-count" id="notes-count">0 SAVED</span>
-        </div>
-        <form id="note-form" class="note-editor">
-            <label for="note-title">NOTE TITLE</label>
-            <input id="note-title" type="text" maxlength="70" placeholder="Give this thought a title..." required>
-            <label for="note-content">YOUR NOTE</label>
-            <textarea id="note-content" rows="4" maxlength="1500" placeholder="Write an idea, reminder or random thought..." required></textarea>
-            <div class="note-editor-footer">
-                <small>Saved in this browser on this device.</small>
-                <button type="submit" class="note-save-btn">+ Save Note</button>
-            </div>
-        </form>
-        <div class="saved-notes-heading">
-            <h3>Saved notes</h3>
-            <span>YOUR PRIVATE COLLECTION</span>
-        </div>
-        <div id="notes-list" class="notes-list" aria-live="polite">
-            <p class="notes-empty">No notes yet. Your next idea can start here.</p>
-        </div>
-    </div>
-</section>
+
 
     <!-- ================= EDUCATION ================= -->
 
