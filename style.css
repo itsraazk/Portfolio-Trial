@@ -1049,3 +1049,68 @@ footer strong {
     .notes-list { grid-template-columns: 1fr; }
     .saved-notes-heading { align-items: flex-start; flex-direction: column; }
 }
+
+
+/* RAAZ.EXE ACCESS SCREEN */
+#password-screen {
+    position: fixed; inset: 0; min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px; z-index: 9999; overflow: hidden;
+    background:
+        radial-gradient(circle at 18% 20%, rgba(0,255,153,.13), transparent 32%),
+        radial-gradient(circle at 85% 82%, rgba(0,180,110,.10), transparent 30%),
+        #070b09;
+}
+#password-screen::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .16;
+    background-image: linear-gradient(rgba(0,255,153,.08) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0,255,153,.08) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+.password-box {
+    position: relative; width: min(100%, 430px); padding: 42px;
+    text-align: left; color: #edf8f1;
+    border: 1px solid rgba(0,255,153,.28); border-radius: 18px;
+    background: linear-gradient(145deg, rgba(18,34,25,.97), rgba(8,14,10,.98));
+    box-shadow: 0 25px 90px rgba(0,0,0,.55), 0 0 55px rgba(0,255,153,.07);
+}
+.login-mark {
+    width: 52px; height: 52px; display: grid; place-items: center;
+    border: 1px solid #00d987; border-radius: 13px;
+    color: #eafff3; font-size: 25px; font-weight: 800; margin-bottom: 28px;
+    box-shadow: inset 0 0 20px rgba(0,255,153,.08);
+}
+.login-mark span { color: #00ff99; }
+.login-eyebrow { color: #68dba4; font-size: 10px; letter-spacing: 2.2px; margin-bottom: 10px; }
+.password-box h1 { font-size: 34px; letter-spacing: -1px; margin-bottom: 8px; }
+.login-description { color: #91a69a; font-size: 13px; line-height: 1.7; margin-bottom: 27px; }
+.password-box form { display: grid; gap: 10px; }
+.password-box label { color: #77c99e; font-size: 10px; letter-spacing: 1.8px; }
+.password-box input {
+    width: 100%; padding: 14px 15px; margin: 0; color: #effff5;
+    background: #080e0a; border: 1px solid #304638; border-radius: 8px;
+    outline: none; font-size: 15px;
+}
+.password-box input:focus { border-color: #00d987; box-shadow: 0 0 0 3px rgba(0,217,135,.10); }
+.password-box input::placeholder { color: #617468; }
+.password-box button {
+    width: 100%; display: flex; justify-content: space-between; align-items: center;
+    margin-top: 8px; padding: 14px 17px; border: 1px solid #00e994;
+    border-radius: 8px; background: #00e994; color: #06110b;
+    font-size: 14px; font-weight: 700; cursor: pointer; transition: .2s;
+}
+.password-box button:hover { background: #9affce; border-color: #9affce; transform: translateY(-1px); }
+.password-box button span { font-size: 19px; }
+#error-message { min-height: 20px; color: #ff9999; font-size: 12px; margin-top: 12px; }
+.login-footer { display: flex; align-items: center; gap: 8px; margin-top: 22px; color: #64816e; font-size: 9px; letter-spacing: 1.7px; }
+.login-dot { width: 6px; height: 6px; border-radius: 50%; background: #00ff99; box-shadow: 0 0 9px #00ff99; }
+@media (max-width: 480px) { .password-box { padding: 30px 24px; } .password-box h1 { font-size: 29px; } }
+
+/* NOTE MEDIA ATTACHMENTS */
+.optional-label { color: #648b74; letter-spacing: 1px; font-size: 9px; }
+.note-media-input { padding: 11px !important; border-style: dashed !important; color: #a9c4b2 !important; }
+.media-hint { color: #789080; font-size: 10px; }
+.note-media-preview { display: block; max-width: 100%; max-height: 220px; margin-top: 12px; border-radius: 8px; border: 1px solid #294333; }
+.note-media-link { display: inline-block; color: #7cebb4; margin-top: 10px; font-size: 12px; }
+.note-card video, .note-card audio { width: 100%; margin-top: 12px; }
