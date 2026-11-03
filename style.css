@@ -2193,3 +2193,9 @@ body.raaz-site:before{content:"";position:fixed;inset:0;z-index:-1;pointer-event
 @media(max-width:650px){.dashboard-section{padding-top:125px!important}.dash-hero-copy{padding:32px 23px 20px!important}.dash-hero h1{font-size:clamp(40px,11vw,56px)!important;letter-spacing:-2.5px!important}.dash-info-strip>div{padding:13px!important}.dash-bottom-row{grid-template-columns:1fr 1fr!important}.password-box{padding:27px 23px!important;border-radius:18px!important}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 .motion-ready{opacity:0;transform:translateY(12px);transition:opacity .55s ease var(--motion-delay,0ms),transform .55s cubic-bezier(.2,.7,.2,1) var(--motion-delay,0ms)}.motion-ready.motion-in{opacity:1;transform:translateY(0)}
+
+/* Respect the existing session unlock script despite the overlay's flex layout. */
+#password-screen[style*="display: none"]{display:none!important}
+#password-screen .login-footer{align-items:center}
+#password-screen .lock-input-wrap{width:100%}
+#password-screen .password-toggle{line-height:1}
