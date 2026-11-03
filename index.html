@@ -41,99 +41,103 @@
     </header>
     <!-- ================= DIGITAL DASHBOARD ================= -->
     <section id="dashboard" class="section dashboard-section">
-        <div class="container">
-            <div class="dash-topline">
-                <p class="section-label">RAAZ.EXE <span>/ PERSONAL COMMAND CENTRE</span></p>
-                <div class="dash-live"><i></i> ALL SYSTEMS PERSONAL</div>
-            </div>
-
-            <div class="dash-welcome">
-                <div class="dash-welcome-copy">
-                    <p class="dash-overline">WELCOME TO MY DIGITAL SPACE</p>
-                    <h2>Build. Learn.<br><span>Repeat.</span></h2>
-                    <p class="dashboard-intro">A live snapshot of what I'm learning, building and exploring. Still a work in progress — just like me.</p>
-                    <a class="dash-explore-link" href="profile.html">EXPLORE MY WORLD <b>↗</b></a>
-                </div>
-                <div class="dash-clock-panel">
-                    <span class="dash-panel-label">YOUR LOCAL TIME</span>
-                    <strong id="dashboard-clock">--:--:--</strong>
-                    <span id="dashboard-date">Loading date...</span>
-                    <div class="dash-clock-line"></div>
-                    <small>TIME KEEPS MOVING. SO DO I.</small>
-                </div>
-                <div class="dash-watermark">R<span>.</span></div>
-            </div>
-
-            <div class="dash-section-heading"><span>01</span><h3>THE CURRENT BUILD</h3><i></i><small>WHAT'S ON MY DESK</small></div>
-            <div class="dashboard-grid">
-                <article class="dashboard-card status-card">
-                    <span class="dashboard-kicker">CURRENT STATUS</span>
-                    <div class="dash-status-title"><span class="status-dot"></span><h3>Learning & Building</h3></div>
-                    <p>Currently pursuing BCA and strengthening the fundamentals behind real-world software.</p>
-                    <div class="dashboard-tags"><span>Student</span><span>Developer in progress</span></div>
-                </article>
-                <article class="dashboard-card dash-focus-card">
-                    <span class="dashboard-kicker">CURRENT FOCUS / 02</span>
-                    <h3>On the learning list</h3>
-                    <ul class="focus-list">
-                        <li><span>HTML & CSS</span><span class="focus-state">PRACTISING</span></li>
-                        <li><span>C Programming</span><span class="focus-state">LEARNING</span></li>
-                        <li><span>Computer Fundamentals</span><span class="focus-state">LEARNING</span></li>
-                        <li><span>JavaScript</span><span class="focus-state">UP NEXT</span></li>
-                    </ul>
-                </article>
-                <article class="dashboard-card dash-tools-card">
-                    <span class="dashboard-kicker">MY TOOLKIT / 03</span>
-                    <h3>Tools in rotation</h3>
-                    <p class="dashboard-muted">The tools I'm using and exploring on my development journey.</p>
-                    <div class="toolkit-list"><span>HTML5</span><span>CSS3</span><span>C</span><span>VS Code</span><span>GitHub</span><span>JavaScript — next</span></div>
-                </article>
-                <article class="dashboard-card dash-activity-card">
-                    <span class="dashboard-kicker">RECENT LOGS / 04</span>
-                    <h3>Things in motion</h3>
-                    <div class="activity-log">
-                        <div><span class="log-marker"></span><p><strong>Portfolio development</strong><small>Improving my personal digital space.</small></p></div>
-                        <div><span class="log-marker"></span><p><strong>ReUnite</strong><small>Exploring a QR-based pet identification concept.</small></p></div>
-                        <div><span class="log-marker"></span><p><strong>BCA journey</strong><small>Building programming and computer science foundations.</small></p></div>
-                    </div>
-                </article>
-            </div>
-            <div class="dash-bottom-row">
-                <div class="dash-stat"><strong>02</strong><span>CERTIFICATES<br><small>LEARNING MILESTONES</small></span></div>
-                <div class="dash-stat"><strong>03</strong><span>PROJECTS & BUILDS<br><small>IDEAS TURNED REAL</small></span></div>
-                <div class="dash-stat dash-stat-note"><strong>∞</strong><span>ROOM TO GROW<br><small>ALWAYS A STUDENT</small></span></div>
-            </div>
+      <div class="container dash-shell">
+        <div class="dash-topline">
+          <p class="section-label">RAAZ<span class="dash-slash">/</span> DIGITAL SPACE <span class="dash-version">VERSION 2.6</span></p>
+          <div class="dash-live"><i></i><span>AVAILABLE FOR CURIOSITY</span></div>
         </div>
+        <div class="dash-hero">
+          <div class="dash-hero-copy">
+            <p class="dash-overline" id="dash-greeting">GOOD EVENING. WELCOME BACK.</p>
+            <h1>Ideas into<br><em>interfaces.</em></h1>
+            <p class="dash-lede">A personal corner of the internet — part workspace, part playground, always under construction.</p>
+            <div class="dash-actions"><a class="dash-primary" href="profile.html">Explore the person <span>↗</span></a><a class="dash-text-link" href="#home">See the intro ↓</a></div>
+          </div>
+          <div class="dash-visual" aria-label="Decorative code terminal">
+            <div class="dash-visual-top"><span><i></i><i></i><i></i></span><small>raaz@workspace ~</small><b>•••</b></div>
+            <div class="dash-code">
+              <p><span>01</span> <b>const</b> developer = {</p>
+              <p><span>02</span> &nbsp; name: <em>'Raaz'</em>,</p>
+              <p><span>03</span> &nbsp; status: <em>'learning'</em>,</p>
+              <p><span>04</span> &nbsp; curiosity: <em>Infinity</em>,</p>
+              <p><span>05</span> &nbsp; building: <em>true</em></p>
+              <p><span>06</span> };</p>
+              <div class="dash-terminal-result"><i></i> process running <b class="dash-cursor">_</b></div>
+            </div>
+            <div class="dash-orbit dash-orbit-one"></div><div class="dash-orbit dash-orbit-two"></div>
+            <span class="dash-visual-index">FIG. 01 / THE BUILDER MINDSET</span>
+          </div>
+        </div>
+        <div class="dash-info-strip">
+          <div><span class="dash-strip-label">LOCAL TIME</span><strong id="dashboard-clock">--:--:--</strong><small id="dashboard-date">Loading date...</small></div>
+          <div><span class="dash-strip-label">CURRENT CHAPTER</span><strong>BCA · UNDERGRAD</strong><small>Dehradun, India</small></div>
+          <div><span class="dash-strip-label">MAIN INTERESTS</span><strong>Code / Design / Security</strong><small>Always exploring something new</small></div>
+          <div><span class="dash-strip-label">MINDSET</span><strong>Build > Just consume</strong><small>Learn it. Try it. Ship it.</small></div>
+        </div>
+
+        <div class="dash-workspace-heading"><div><span>01 / WORKSPACE</span><h2>What’s happening <em>now.</em></h2></div><p>A small peek at the current rotation.</p></div>
+        <div class="dash-workspace">
+          <article class="dash-panel dash-focus-panel">
+            <div class="dash-panel-head"><span>FOCUS TRACKER</span><span class="dash-live-dot">● LIVE</span></div>
+            <h3>Current learning loop</h3>
+            <p class="dash-panel-sub">Switch between the things taking up my screen time.</p>
+            <div class="dash-tabs" role="tablist" aria-label="Learning focus">
+              <button class="active" type="button" data-dash-tab="build" role="tab" aria-selected="true">Build</button>
+              <button type="button" data-dash-tab="learn" role="tab" aria-selected="false">Learn</button>
+              <button type="button" data-dash-tab="explore" role="tab" aria-selected="false">Explore</button>
+            </div>
+            <div class="dash-tab-content" aria-live="polite">
+              <div class="dash-tab-title"><strong id="dash-tab-title">Web development</strong><span id="dash-tab-tag">IN PRACTICE</span></div>
+              <p id="dash-tab-description">Building responsive pages and learning how HTML, CSS and JavaScript work together.</p>
+              <div class="dash-progress"><span id="dash-progress-bar" style="width:42%"></span></div>
+              <small id="dash-progress-label">CURRENT TRACK · PRACTICE MODE</small>
+            </div>
+          </article>
+          <article class="dash-panel dash-activity-panel">
+            <div class="dash-panel-head"><span>RECENT ACTIVITY</span><span>02—06</span></div>
+            <h3>Making things happen.</h3>
+            <div class="dash-activity-list">
+              <div><span class="dash-activity-number">01</span><p><b>RAAZ.EXE</b><small>Refining this personal website.</small></p><span class="dash-activity-state">ONGOING</span></div>
+              <div><span class="dash-activity-number">02</span><p><b>ReUnite</b><small>Pet identity & reunification concept.</small></p><span class="dash-activity-state">CONCEPT</span></div>
+              <div><span class="dash-activity-number">03</span><p><b>BCA foundations</b><small>Programming and computer science basics.</small></p><span class="dash-activity-state">LEARNING</span></div>
+            </div>
+            <a href="profile.html#projects" class="dash-panel-link">VIEW PROJECTS <span>↗</span></a>
+          </article>
+          <article class="dash-panel dash-stack-panel">
+            <div class="dash-panel-head"><span>THE TOOLBOX</span><span>STACK / 001</span></div>
+            <h3>Tools of the trade.</h3>
+            <p class="dash-panel-sub">Things I use, study or want to get better at.</p>
+            <div class="dash-stack-list"><span>HTML5</span><span>CSS3</span><span>C</span><span>JavaScript</span><span>VS Code</span><span>Git & GitHub</span></div>
+            <div class="dash-stack-note"><span>↳</span> The stack grows as the skills do.</div>
+          </article>
+          <article class="dash-panel dash-manifesto-panel">
+            <span class="dash-manifesto-mark">“</span>
+            <p>Don’t wait to feel ready.<br><em>Build while learning.</em></p>
+            <span class="dash-manifesto-credit">A NOTE TO MY FUTURE SELF — RAAZ</span>
+            <a href="profile.html#philosophy" aria-label="Read my philosophy">↗</a>
+          </article>
+        </div>
+        <div class="dash-bottom-row">
+          <div class="dash-stat"><strong>02</strong><span>CERTIFICATES<small>LEARNING MILESTONES</small></span></div>
+          <div class="dash-stat"><strong>03</strong><span>PROJECTS & BUILDS<small>IDEAS IN MOTION</small></span></div>
+          <div class="dash-stat"><strong>∞</strong><span>ROOM TO GROW<small>NEVER DONE LEARNING</small></span></div>
+          <a class="dash-stat dash-stat-link" href="gallery.html"><strong>↗</strong><span>OPEN THE GALLERY<small>COLLECTED MOMENTS</small></span></a>
+        </div>
+      </div>
     </section>
 
-<!-- ================= HERO ================= -->
-
+    <!-- ================= INTRO ================= -->
     <section id="home" class="hero">
-
-        <div class="hero-content">
-
-            <p class="small-text">HELLO, I'M</p>
-
-            <h1>Raj Kumar Singh</h1>
-
-            <h2>BCA Student • Developer • Tech Enthusiast</h2>
-
-            <p class="hero-description">
-                Building my foundation in software engineering, web development,
-                cybersecurity and emerging technologies.
-            </p>
-
-            <div class="buttons">
-                <a href="profile.html#projects" class="btn primary">View My Work</a>
-                <a href="profile.html#contact" class="btn secondary">Contact Me</a>
-            </div>
-
-        </div>
-
+      <div class="hero-content">
+        <p class="small-text">A HUMAN, NOT JUST A USERNAME</p>
+        <h1>Hey, I'm Raj.<br><span class="hero-accent">Call me Raaz.</span></h1>
+        <h2>BCA Student · Curious Builder · Tech Enthusiast</h2>
+        <p class="hero-description">I’m figuring things out one project at a time — learning the fundamentals, experimenting with ideas and documenting the journey along the way.</p>
+        <div class="buttons"><a href="profile.html#projects" class="btn primary">Explore my work ↗</a><a href="profile.html#about" class="btn secondary">A little about me</a></div>
+      </div>
+      <div class="hero-side-note"><span>BASED IN</span><strong>DEHRADUN, IN</strong><span>BUILT WITH CURIOSITY <b>✳</b></span></div>
     </section>
 
-
-    
 <!-- ================= PERSONAL NOTES ================= -->
     <section id="notes" class="section notes-section">
         <div class="container">
