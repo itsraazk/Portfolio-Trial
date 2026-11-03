@@ -2199,3 +2199,61 @@ body.raaz-site:before{content:"";position:fixed;inset:0;z-index:-1;pointer-event
 #password-screen .login-footer{align-items:center}
 #password-screen .lock-input-wrap{width:100%}
 #password-screen .password-toggle{line-height:1}
+
+
+/* Dashboard snapshot cards: subtle, tactile hover and keyboard focus states. */
+.dash-info-strip > div,
+.dash-info-strip .dash-info-card {
+  position: relative !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(230,236,231,.10) !important;
+  border-radius: 12px !important;
+  background: linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.012)) !important;
+  transition: transform .28s ease, border-color .28s ease, background .28s ease, box-shadow .28s ease !important;
+  will-change: transform;
+}
+.dash-info-strip > div::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(120deg,rgba(255,255,255,.055),transparent 55%);
+  transition: opacity .28s ease;
+}
+.dash-info-strip > div:hover,
+.dash-info-strip > div:focus-visible {
+  transform: translateY(-5px) !important;
+  border-color: rgba(225,233,227,.28) !important;
+  background: linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025)) !important;
+  box-shadow: 0 14px 34px rgba(0,0,0,.22), inset 0 1px rgba(255,255,255,.06) !important;
+  outline: none !important;
+}
+.dash-info-strip > div:hover::after,
+.dash-info-strip > div:focus-visible::after { opacity: 1; }
+.dash-info-strip .dash-strip-label {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+}
+.dash-card-mark {
+  color: #69736c;
+  font-size: 9px;
+  font-style: normal;
+  letter-spacing: .08em;
+  transition: color .25s ease, transform .25s ease;
+}
+.dash-info-strip > div:hover .dash-card-mark,
+.dash-info-strip > div:focus-visible .dash-card-mark {
+  color: #d4dad5;
+  transform: translate(2px,-2px);
+}
+#dashboard-clock { font-variant-numeric: tabular-nums; letter-spacing: -.025em; }
+@media (prefers-reduced-motion: reduce) {
+  .dash-info-strip > div,
+  .dash-info-strip > div::after,
+  .dash-card-mark { transition: none !important; }
+  .dash-info-strip > div:hover,
+  .dash-info-strip > div:focus-visible { transform: none !important; }
+}
