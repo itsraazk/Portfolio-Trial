@@ -6,8 +6,9 @@ function checkPassword() {
 
     if (passwordInput.value === correctPassword) {
         sessionStorage.setItem("raaz-exe-unlocked", "true");
-        passwordScreen.style.display = "none";
+        passwordScreen.classList.add("is-unlocking");
         errorMessage.textContent = "";
+        window.setTimeout(() => { passwordScreen.style.display = "none"; }, 460);
     } else {
         errorMessage.textContent = "Access denied. Check your password and try again.";
         passwordInput.select();
@@ -209,4 +210,28 @@ if (noteForm) {
     document.getElementById("dash-progress-bar").style.width = track.progress;
     document.getElementById("dash-progress-label").textContent = track.label;
   }));
+})();
+
+
+/* Add lock-screen controls without changing the existing password form contract. */
+(() => {
+ const input=document.getElementById("password");
+ const form=document.getElementById("password-form");
+ const footer=document.querySelector("#password-screen .login-footer");
+ if(input&&form&&!document.getElementById("toggle-password")){
+   const wrap=document.createElement("div");wrap.className="lock-input-wrap";
+   input.parentNode.insertBefore(wrap,input);wrap.appendChild(input);
+   const toggle=document.createElement("button");toggle.type="button";toggle.id="toggle-password";toggle.className="password-toggle";toggle.setAttribute("aria-label","Show password");toggle.setAttribute("aria-pressed","false");toggle.innerHTML='<span class="show-label">SHOW</span><span class="hide-label">HIDE</span>';wrap.appendChild(toggle);
+   toggle.addEventListener("click",()=>{const reveal=input.type==="password";input.type=reveal?"text":"password";toggle.setAttribute("aria-pressed",String(reveal));toggle.setAttribute("aria-label",reveal?"Hide password":"Show password");input.focus();});
+ }
+ if(footer&&!document.getElementById("lock-clock")){const clock=document.createElement("span");clock.id="lock-clock";footer.appendChild(clock);const update=()=>clock.textContent="LOCAL TIME · "+new Date().toLocaleTimeString("en-IN",{hour:"2-digit",minute:"2-digit",hour12:true});update();window.setInterval(update,30000);}
+})();
+
+/* Gentle scroll reveals for dashboard and note cards. */
+(() => {
+ const items=document.querySelectorAll(".dash-panel,.dash-stat,.dash-info-strip,.dash-hero,.note-card");
+ if(!("IntersectionObserver" in window)||window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+ items.forEach((item,index)=>{item.classList.add("motion-ready");item.style.setProperty("--motion-delay",Math.min(index%5,4)*60+"ms");});
+ const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(!entry.isIntersecting)return;entry.target.classList.add("motion-in");observer.unobserve(entry.target);}),{threshold:.08});
+ items.forEach(item=>observer.observe(item));
 })();
