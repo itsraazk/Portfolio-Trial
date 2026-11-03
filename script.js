@@ -5,12 +5,19 @@ function checkPassword() {
     const errorMessage = document.getElementById("error-message");
 
     if (passwordInput.value === correctPassword) {
+        sessionStorage.setItem("raaz-exe-unlocked", "true");
         passwordScreen.style.display = "none";
         errorMessage.textContent = "";
     } else {
         errorMessage.textContent = "Access denied. Check your password and try again.";
         passwordInput.select();
     }
+}
+
+// Keep access unlocked while the visitor navigates between pages in this tab.
+const passwordScreen = document.getElementById("password-screen");
+if (passwordScreen && sessionStorage.getItem("raaz-exe-unlocked") === "true") {
+    passwordScreen.style.display = "none";
 }
 
 // Submit the login form with the keyboard Enter key or the button.
