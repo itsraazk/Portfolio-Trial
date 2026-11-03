@@ -184,3 +184,29 @@ if (noteForm) {
     });
     renderNotes();
 }
+
+
+/* Dashboard micro-interactions */
+(() => {
+  const greeting = document.getElementById("dash-greeting");
+  if (greeting) {
+    const hour = new Date().getHours();
+    greeting.textContent = hour < 12 ? "GOOD MORNING. WELCOME IN." : hour < 17 ? "GOOD AFTERNOON. WELCOME IN." : "GOOD EVENING. WELCOME IN.";
+  }
+  const tracks = {
+    build: {title:"Web development",tag:"IN PRACTICE",description:"Building responsive pages and learning how HTML, CSS and JavaScript work together.",progress:"42%",label:"CURRENT TRACK · PRACTICE MODE"},
+    learn: {title:"Programming fundamentals",tag:"STUDY MODE",description:"Strengthening C programming, logic, computer fundamentals and the basics that make good developers.",progress:"30%",label:"CURRENT TRACK · FOUNDATION MODE"},
+    explore: {title:"Security & emerging tech",tag:"EXPLORING",description:"Getting familiar with cybersecurity, AI and the systems behind the technology we use every day.",progress:"18%",label:"CURRENT TRACK · CURIOSITY MODE"}
+  };
+  const buttons = document.querySelectorAll("[data-dash-tab]");
+  buttons.forEach(button => button.addEventListener("click", () => {
+    const track = tracks[button.dataset.dashTab];
+    if (!track) return;
+    buttons.forEach(item => { const active = item === button; item.classList.toggle("active",active); item.setAttribute("aria-selected",String(active)); });
+    document.getElementById("dash-tab-title").textContent = track.title;
+    document.getElementById("dash-tab-tag").textContent = track.tag;
+    document.getElementById("dash-tab-description").textContent = track.description;
+    document.getElementById("dash-progress-bar").style.width = track.progress;
+    document.getElementById("dash-progress-label").textContent = track.label;
+  }));
+})();
