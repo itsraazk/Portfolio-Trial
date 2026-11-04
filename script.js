@@ -306,6 +306,9 @@ if (noteForm) {
       open.target = "_blank";
       open.rel = "noopener noreferrer";
       open.textContent = "OPEN LINK ↗";
+      const copy = document.createElement("button");
+      copy.type = "button"; copy.className = "bookmark-delete"; copy.textContent = "Copy link";
+      copy.addEventListener("click", async () => { try { if(navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(item.url); else { const helper=document.createElement("textarea"); helper.value=item.url; helper.style.position="fixed"; helper.style.opacity="0"; document.body.appendChild(helper); helper.select(); document.execCommand("copy"); helper.remove(); } window.showRaazToast?.("Link copied to clipboard."); } catch { window.showRaazToast?.("Could not copy this link. Open it and copy manually."); } });
       const remove = document.createElement("button");
       remove.type = "button";
       remove.className = "bookmark-delete";
@@ -313,7 +316,7 @@ if (noteForm) {
       remove.addEventListener("click", () => {
         if (writeBookmarks(readBookmarks().filter(saved => saved.id !== item.id))) renderBookmarks();
       });
-      actions.append(open, remove);
+      actions.append(open, copy, remove);
       card.append(top, title, link, actions);
       bookmarkList.appendChild(card);
     });
@@ -328,12 +331,13 @@ if (noteForm) {
       const url = safeUrl(rawUrl);
       if (!title || !url) { alert("Please enter a name and a valid http:// or https:// link."); return; }
       const items = readBookmarks();
-      if (items.some(item => item.url === url)) { alert("That link is already in your vault."); return; }
+      if (items.some(item => item.url === url)) { window.showRaazToast?.("That link is already in your vault."); return; }
       items.push({ id: Date.now().toString() + Math.random().toString(16).slice(2), title, url, category });
-      if (writeBookmarks(items)) { bookmarkForm.reset(); renderBookmarks(); }
+      if (writeBookmarks(items)) { bookmarkForm.reset(); renderBookmarks(); window.showRaazToast?.("Bookmark saved to your vault."); }
     });
   }
   bookmarkSearch?.addEventListener("input", renderBookmarks);
+  document.getElementById("export-bookmarks")?.addEventListener("click", () => { const data=readBookmarks(); if(!data.length){window.showRaazToast?.("Your bookmark vault is empty.");return;} const blob=new Blob([JSON.stringify({exportedAt:new Date().toISOString(),bookmarks:data},null,2)],{type:"application/json"}); const url=URL.createObjectURL(blob); const link=document.createElement("a"); link.href=url; link.download="raaz-bookmarks-backup.json"; link.click(); URL.revokeObjectURL(url); window.showRaazToast?.("Bookmark backup exported."); });
   renderBookmarks();
 
   const commands = [
@@ -412,6 +416,7 @@ if (noteForm) {
   search.addEventListener("keydown", event => {
     if (event.key === "ArrowDown" || event.key === "ArrowUp") {
       event.preventDefault();
+      if (!visibleCommands.length) return;
       activeIndex = (activeIndex + (event.key === "ArrowDown" ? 1 : -1) + visibleCommands.length) % visibleCommands.length;
       renderCommands();
     } else if (event.key === "Enter" && visibleCommands[activeIndex]) {
@@ -427,4 +432,16 @@ if (noteForm) {
       if (palette.classList.contains("is-open")) closePalette(); else openPalette();
     } else if (event.key === "Escape" && palette.classList.contains("is-open")) closePalette();
   });
+})();
+
+
+/* Small quality-of-life interactions: mobile navigation, reading progress and feedback. */
+(() => {
+ const menuButton=document.querySelector("[data-mobile-nav]"),menu=document.getElementById("primary-navigation");
+ if(menuButton&&menu){const close=()=>{menu.classList.remove("is-open");menuButton.setAttribute("aria-expanded","false");menuButton.setAttribute("aria-label","Open navigation");};menuButton.addEventListener("click",()=>{const open=menu.classList.toggle("is-open");menuButton.setAttribute("aria-expanded",String(open));menuButton.setAttribute("aria-label",open?"Close navigation":"Open navigation");});menu.querySelectorAll("a").forEach(link=>link.addEventListener("click",close));document.addEventListener("keydown",e=>{if(e.key==="Escape")close();});}
+ const progress=document.getElementById("reading-progress"),topButton=document.getElementById("back-to-top");let ticking=false;
+ const update=()=>{const max=document.documentElement.scrollHeight-window.innerHeight;if(progress)progress.style.width=(max>0?window.scrollY/max*100:0)+"%";if(topButton)topButton.classList.toggle("is-visible",window.scrollY>520);ticking=false;};
+ window.addEventListener("scroll",()=>{if(!ticking){window.requestAnimationFrame(update);ticking=true;}},{passive:true});window.addEventListener("resize",update);update();
+ topButton?.addEventListener("click",()=>window.scrollTo({top:0,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}));
+ let timer;window.showRaazToast=message=>{const toast=document.getElementById("site-toast");if(!toast)return;toast.textContent=message;toast.classList.add("is-visible");window.clearTimeout(timer);timer=window.setTimeout(()=>toast.classList.remove("is-visible"),2600);};
 })();
