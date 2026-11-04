@@ -34,10 +34,7 @@
                 <a href="index.html#dashboard" aria-current="page">Dashboard</a>
                 <a href="index.html#home">Home</a>
                 <a href="profile.html" >Explore Me <span>↗</span></a>
-                <a href="index.html#notes">Notes</a>
-                <a href="index.html#bookmark-vault">Bookmarks</a>
-                <button class="palette-trigger" type="button" data-open-palette aria-label="Open command palette">⌘ K</button>
-                <a href="gallery.html">Gallery</a>
+                <a href="index.html#notes">Notes</a><a href="gallery.html">Gallery</a>
                 <a href="dumps.html">Dumps</a>
             </div>
             <button class="mobile-nav-toggle" type="button" data-mobile-nav aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation"><span></span><span></span><span></span></button>
@@ -143,23 +140,6 @@
     </section>
 
 
-    <!-- ================= BOOKMARK VAULT ================= -->
-    <section id="bookmark-vault" class="section bookmark-section">
-        <div class="container">
-            <p class="section-label">PERSONAL SPACE / BOOKMARKS</p>
-            <div class="bookmark-heading"><div><h2 class="section-title">Bookmarks<span class="accent-text">.vault</span></h2><p class="bookmark-intro">Useful links, tools, references and corners of the internet worth coming back to.</p></div><span class="bookmark-count" id="bookmark-count">00 SAVED</span></div>
-            <form id="bookmark-form" class="bookmark-editor">
-                <div class="bookmark-field"><label for="bookmark-title">NAME</label><input id="bookmark-title" type="text" maxlength="70" placeholder="e.g. MDN Web Docs" required></div>
-                <div class="bookmark-field"><label for="bookmark-url">URL</label><input id="bookmark-url" type="url" inputmode="url" placeholder="https://example.com" required></div>
-                <div class="bookmark-field"><label for="bookmark-category">CATEGORY</label><select id="bookmark-category"><option>Development</option><option>Learning</option><option>Design</option><option>Tools</option><option>Inspiration</option><option>Other</option></select></div>
-                <button class="bookmark-save-btn" type="submit">＋ Save link</button>
-                <small class="bookmark-storage-note">Saved locally in this browser. Export your vault to keep a backup.</small>
-            </form>
-            <div class="bookmark-tools"><label class="bookmark-search-wrap"><span>⌕</span><input id="bookmark-search" type="search" placeholder="Search saved links..." aria-label="Search bookmarks"></label><div class="bookmark-tool-actions"><span>YOUR PERSONAL LINK LIBRARY</span><button class="bookmark-export-btn" type="button" id="export-bookmarks">↓ EXPORT VAULT</button></div></div>
-            <div class="bookmarks-grid" id="bookmarks-list" aria-live="polite"><p class="bookmarks-empty">Your vault is waiting for its first link.</p></div>
-        </div>
-    </section>
-
     <!-- ================= PERSONAL NOTES ================= -->
     <section id="notes" class="section notes-section">
         <div class="container">
@@ -217,16 +197,6 @@
     </footer>
 
 
-    <!-- ================= COMMAND PALETTE ================= -->
-    <div class="command-palette" id="command-palette" aria-hidden="true">
-        <button class="palette-backdrop" type="button" data-close-palette aria-label="Close command palette"></button>
-        <section class="palette-dialog" role="dialog" aria-modal="true" aria-labelledby="palette-title">
-            <div class="palette-search-row"><span>⌕</span><input id="palette-search" type="search" placeholder="Jump to a page or search bookmarks..." autocomplete="off" aria-label="Search commands"><kbd>ESC</kbd></div>
-            <div class="palette-results-heading"><span id="palette-title">QUICK NAVIGATION</span><span>↑ ↓ SELECT · ENTER OPEN</span></div>
-            <div class="palette-results" id="palette-results" role="listbox" aria-label="Command results"></div>
-            <div class="palette-footer"><span>RAAZ.EXE / COMMAND PALETTE</span><span>CTRL OR ⌘ + K TO OPEN</span></div>
-        </section>
-    </div>
     <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">↑</button>
     <div class="site-toast" id="site-toast" role="status" aria-live="polite"></div>
 
