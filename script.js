@@ -237,3 +237,13 @@ if (noteForm) {
 })();
 
 
+/* Small quality-of-life interactions: mobile navigation, reading progress and feedback. */
+(() => {
+ const menuButton=document.querySelector("[data-mobile-nav]"),menu=document.getElementById("primary-navigation");
+ if(menuButton&&menu){const close=()=>{menu.classList.remove("is-open");menuButton.setAttribute("aria-expanded","false");menuButton.setAttribute("aria-label","Open navigation");};menuButton.addEventListener("click",()=>{const open=menu.classList.toggle("is-open");menuButton.setAttribute("aria-expanded",String(open));menuButton.setAttribute("aria-label",open?"Close navigation":"Open navigation");});menu.querySelectorAll("a").forEach(link=>link.addEventListener("click",close));document.addEventListener("keydown",e=>{if(e.key==="Escape")close();});}
+ const progress=document.getElementById("reading-progress"),topButton=document.getElementById("back-to-top");let ticking=false;
+ const update=()=>{const max=document.documentElement.scrollHeight-window.innerHeight;if(progress)progress.style.width=(max>0?window.scrollY/max*100:0)+"%";if(topButton)topButton.classList.toggle("is-visible",window.scrollY>520);ticking=false;};
+ window.addEventListener("scroll",()=>{if(!ticking){window.requestAnimationFrame(update);ticking=true;}},{passive:true});window.addEventListener("resize",update);update();
+ topButton?.addEventListener("click",()=>window.scrollTo({top:0,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}));
+ let timer;window.showRaazToast=message=>{const toast=document.getElementById("site-toast");if(!toast)return;toast.textContent=message;toast.classList.add("is-visible");window.clearTimeout(timer);timer=window.setTimeout(()=>toast.classList.remove("is-visible"),2600);};
+})();
