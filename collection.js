@@ -12,7 +12,8 @@
     const readItems = () => { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); } catch { return []; } };
     const saveItems = items => { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(items)); return true; } catch { error.textContent = "Browser storage is full. Remove a few large files and try again."; return false; } };
     const escapeHTML = value => String(value || "").replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[char]));
-    const formatDate = value => new Date(value).toLocaleDateString("en-IN", {day:"2-digit", month:"short", year:"numeric"});
+    const formatDate = value => { const date=new Date(value); return Number.isNaN(date.getTime()) ? "Date unavailable" : date.toLocaleDateString("en-IN", {day:"2-digit", month:"short", year:"numeric"}); };
+    const safeDataUrl = (value, mode) => { if(typeof value!=="string"||!value.startsWith("data:")||!value.includes(";base64,"))return ""; const mime=value.slice(5,value.indexOf(";")); if(mode==="image")return mime.startsWith("image/")&&mime!=="image/svg+xml"?value:""; if(/^(text\/html|application\/xhtml\+xml|image\/svg\+xml)$/i.test(mime))return ""; return value; };
     const openModal = () => { modal.classList.add("visible"); modal.setAttribute("aria-hidden","false"); };
     const closeModal = () => { modal.classList.remove("visible"); modal.setAttribute("aria-hidden","true"); };
     document.getElementById("open-editor").addEventListener("click", openModal);
@@ -34,9 +35,9 @@
             return;
         }
         if (type === "gallery") {
-            grid.innerHTML = visible.map(item => '<article class="gallery-card"><button class="gallery-image" data-view="' + item.id + '" aria-label="View ' + escapeHTML(item.title) + '"><img src="' + item.data + '" alt="' + escapeHTML(item.title) + '" loading="lazy"><span class="gallery-zoom">↗ VIEW</span></button><div class="gallery-card-caption"><div><h3>' + escapeHTML(item.title) + '</h3><p>' + escapeHTML(item.caption || "A moment worth keeping.") + '</p><small>' + formatDate(item.createdAt) + '</small></div><button class="item-delete" data-delete="' + item.id + '" aria-label="Delete photo">×</button></div></article>').join("");
+            grid.innerHTML = visible.map(item => { const data=safeDataUrl(item.data,"image"); return '<article class="gallery-card"><button class="gallery-image" data-view="' + escapeHTML(item.id) + '" aria-label="View ' + escapeHTML(item.title) + '"' + (data ? "" : " disabled") + '>' + (data ? '<img src="' + escapeHTML(data) + '" alt="' + escapeHTML(item.title) + '" loading="lazy">' : '<span class="gallery-image-unavailable">Image unavailable</span>') + '<span class="gallery-zoom">↗ VIEW</span></button><div class="gallery-card-caption"><div><h3>' + escapeHTML(item.title) + '</h3><p>' + escapeHTML(item.caption || "A moment worth keeping.") + '</p><small>' + formatDate(item.createdAt) + '</small></div><button class="item-delete" data-delete="' + escapeHTML(item.id) + '" aria-label="Delete photo">×</button></div></article>'; }).join("");
         } else {
-            grid.innerHTML = visible.map(item => '<article class="dump-card"><div class="dump-card-top"><span class="dump-category">' + escapeHTML(item.category || "random") + '</span><span class="dump-date">' + formatDate(item.createdAt) + '</span></div><h3>' + escapeHTML(item.title) + '</h3>' + (item.body ? '<p class="dump-body">' + escapeHTML(item.body).replace(/\n/g,"<br>") + '</p>' : '') + (item.file ? '<a class="dump-attachment" href="' + item.file.data + '" download="' + escapeHTML(item.file.name) + '">↳ ' + escapeHTML(item.file.name) + ' <span>DOWNLOAD</span></a>' : '') + '<div class="dump-card-bottom"><span>RAAZ / PRIVATE DROP</span><button class="item-delete" data-delete="' + item.id + '" aria-label="Delete dump">DELETE ×</button></div></article>').join("");
+            grid.innerHTML = visible.map(item => { const data=item.file ? safeDataUrl(item.file.data,"file") : ""; return '<article class="dump-card"><div class="dump-card-top"><span class="dump-category">' + escapeHTML(item.category || "random") + '</span><span class="dump-date">' + formatDate(item.createdAt) + '</span></div><h3>' + escapeHTML(item.title) + '</h3>' + (item.body ? '<p class="dump-body">' + escapeHTML(item.body).replace(/\n/g,"<br>") + '</p>' : '') + (data ? '<a class="dump-attachment" href="' + escapeHTML(data) + '" download="' + escapeHTML(item.file.name) + '">↳ ' + escapeHTML(item.file.name) + ' <span>DOWNLOAD</span></a>' : (item.file ? '<span class="dump-attachment-unavailable">Attachment unavailable</span>' : '')) + '<div class="dump-card-bottom"><span>RAAZ / PRIVATE DROP</span><button class="item-delete" data-delete="' + escapeHTML(item.id) + '" aria-label="Delete dump">DELETE ×</button></div></article>'; }).join("");
         }
         grid.querySelectorAll("[data-delete]").forEach(button => button.addEventListener("click", () => {
             if (!confirm("Delete this item from this browser?")) return;
@@ -44,7 +45,8 @@
         }));
         if (type === "gallery") grid.querySelectorAll("[data-view]").forEach(button => button.addEventListener("click", () => {
             const item = readItems().find(entry => entry.id === button.dataset.view); if (!item) return;
-            document.getElementById("lightbox-image").src = item.data;
+            const imageData=safeDataUrl(item.data,"image"); if(!imageData)return;
+            document.getElementById("lightbox-image").src = imageData;
             document.getElementById("lightbox-image").alt = item.title;
             document.getElementById("lightbox-caption").textContent = item.title + (item.caption ? " — " + item.caption : "");
             document.getElementById("lightbox").classList.add("visible");
